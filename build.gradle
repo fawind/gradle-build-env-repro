@@ -1,0 +1,14 @@
+import java.lang.management.ManagementFactory;
+import java.lang.management.RuntimeMXBean;
+
+plugins {
+    id 'java-library'
+}
+
+tasks.register('printArgs') {
+    doLast {
+        RuntimeMXBean runtimeMxBean = ManagementFactory.getRuntimeMXBean()
+        def arguments = runtimeMxBean.getInputArguments()
+        println 'Args: ' + arguments
+    }
+}
